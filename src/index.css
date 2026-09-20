@@ -9,7 +9,7 @@
   --line: rgba(17, 17, 15, 0.16);
   --accent: #f04427;
   --accent-ink: #140b08;
-  --radius: 2px;
+  --radius: 10px;
   font-family: "SF Arabic", "Noto Sans Arabic", "Geeza Pro", Tahoma, Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,7 +31,7 @@
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
   background: var(--bg);
 }
 
@@ -58,6 +58,24 @@ a {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  right: 1rem;
+  z-index: 1000;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  transform: translateY(-180%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 :focus-visible {
@@ -143,6 +161,21 @@ a {
   background: transparent;
   color: var(--text);
   cursor: pointer;
+  transition: color 220ms ease, background-color 220ms ease, transform 220ms ease;
+}
+
+.theme-toggle:hover {
+  background: var(--surface);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.theme-toggle:active,
+.header-cta:active,
+.text-link:active,
+.project a:active,
+.contact a:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 .header-cta {
@@ -233,6 +266,7 @@ a {
   min-height: 38rem;
   overflow: hidden;
   background: #141414;
+  border-radius: 12px;
 }
 
 .hero-media img {
@@ -313,6 +347,7 @@ a {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--surface);
+  border-radius: 12px;
 }
 
 .image-shell img {
@@ -535,6 +570,7 @@ a {
   font-size: clamp(2.2rem, 4vw, 4.8rem);
   letter-spacing: -0.06em;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .proof-metrics span {
@@ -579,6 +615,7 @@ a {
 
 .footer-line {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 1.5rem;
   margin-top: clamp(7rem, 15vw, 13rem);
@@ -586,6 +623,61 @@ a {
   border-top: 1px solid rgba(243, 239, 231, 0.2);
   color: #aaa49b;
   font-size: 0.82rem;
+}
+
+.footer-line a {
+  transition: color 220ms ease;
+}
+
+.footer-line a:hover {
+  color: var(--accent);
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: clamp(2rem, 8vw, 8rem);
+  background:
+    radial-gradient(circle at 75% 25%, rgba(240, 68, 39, 0.18), transparent 30rem),
+    var(--bg);
+}
+
+.not-found > p {
+  margin: 0 0 1.5rem;
+  color: var(--accent);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.not-found h1 {
+  max-width: 10ch;
+  margin: 0;
+  font-size: clamp(4rem, 11vw, 11rem);
+  font-weight: 790;
+  letter-spacing: -0.075em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.not-found a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: fit-content;
+  margin-top: 3rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-weight: 750;
+  transition: color 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+
+.not-found a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
 }
 
 @keyframes shimmer {

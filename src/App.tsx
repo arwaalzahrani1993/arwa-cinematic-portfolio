@@ -12,6 +12,8 @@ import {
   useScroll,
   useTransform,
 } from 'framer-motion'
+import MotionCatalog from './MotionCatalog'
+import PolishReport from './PolishReport'
 
 type Project = {
   title: string
@@ -117,6 +119,7 @@ function ThemeToggle() {
       className="theme-toggle"
       type="button"
       onClick={toggleTheme}
+      aria-pressed={isDark}
       aria-label={isDark ? 'تفعيل الوضع الفاتح' : 'تفعيل الوضع الداكن'}
     >
       {isDark ? <Sun size={18} weight="bold" /> : <Moon size={18} weight="bold" />}
@@ -151,6 +154,7 @@ function Header() {
         <a href="#work">الأعمال</a>
         <a href="#services">ما أقدمه</a>
         <a href="#about">عني</a>
+        <a href="/motion-catalog">مختبر الحركة</a>
       </nav>
       <div className="header-actions">
         <ThemeToggle />
@@ -310,16 +314,16 @@ function Proof() {
       </Reveal>
       <Reveal className="proof-metrics">
         <div>
-          <strong>96</strong>
-          <span>أداء جوال</span>
+          <strong>3</strong>
+          <span>مشاريع منشورة</span>
         </div>
         <div>
-          <strong>100</strong>
-          <span>إتاحة وSEO</span>
+          <strong>RTL</strong>
+          <span>تجارب عربية أولًا</span>
         </div>
         <div>
-          <strong>0</strong>
-          <span>اهتزاز بصري</span>
+          <strong>AA</strong>
+          <span>تباين واضح</span>
         </div>
       </Reveal>
     </section>
@@ -338,6 +342,8 @@ function Contact() {
       </Reveal>
       <div className="footer-line">
         <span>ARWA</span>
+        <a href="/motion-catalog">دراسة الحركة</a>
+        <a href="/polish-report">تقرير الصقل</a>
         <span>تصميم وتطوير تجارب الويب</span>
       </div>
     </footer>
@@ -346,12 +352,32 @@ function Contact() {
 
 function App() {
   const { scrollYProgress } = useScroll()
+  const path = window.location.pathname.replace(/\/$/, '') || '/'
+
+  if (path === '/motion-catalog') {
+    return <MotionCatalog />
+  }
+
+  if (path === '/polish-report') {
+    return <PolishReport />
+  }
+
+  if (path !== '/') {
+    return (
+      <main className="not-found" id="main-content">
+        <p>404 / الرابط غير موجود</p>
+        <h1>يبدو أن هذه الصفحة خرجت من المشهد.</h1>
+        <a href="/">العودة إلى البداية <ArrowUpLeft size={22} weight="bold" /></a>
+      </main>
+    )
+  }
 
   return (
     <SmoothScroll>
-      <motion.div className="page-progress" style={{ scaleX: scrollYProgress }} />
+      <a className="skip-link" href="#main-content">تخطّي إلى المحتوى</a>
+      <motion.div aria-hidden="true" className="page-progress" style={{ scaleX: scrollYProgress }} />
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <Statement />
         <Work />

@@ -1,0 +1,178 @@
+.polish-report-page {
+  --polish-bg: #0d0d0c;
+  --polish-surface: #171714;
+  --polish-ink: #f0ece3;
+  --polish-muted: #aaa399;
+  --polish-accent: #ff5435;
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at 80% 8%, rgba(255, 84, 53, 0.16), transparent 26rem),
+    var(--polish-bg);
+  color: var(--polish-ink);
+}
+
+.polish-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 76px;
+  padding-inline: clamp(1rem, 4vw, 4rem);
+  border-bottom: 1px solid rgba(240, 236, 227, 0.16);
+}
+
+.polish-nav > span {
+  color: var(--polish-muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.polish-nav > a:last-child {
+  justify-self: end;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.polish-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.5fr);
+  align-items: end;
+  gap: clamp(3rem, 10vw, 10rem);
+  min-height: 72dvh;
+  padding: clamp(5rem, 12vw, 11rem) clamp(1rem, 4vw, 4rem) 4rem;
+}
+
+.polish-hero p {
+  color: var(--polish-muted);
+  line-height: 1.8;
+}
+
+.polish-hero div > p {
+  margin: 0 0 1.3rem;
+  color: var(--polish-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.polish-hero h1 {
+  max-width: 9ch;
+  margin: 0;
+  font-size: clamp(5rem, 13vw, 14rem);
+  font-weight: 810;
+  letter-spacing: -0.08em;
+  line-height: 0.83;
+}
+
+.scoreboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-block: 1px solid rgba(240, 236, 227, 0.18);
+}
+
+.scoreboard div {
+  min-height: 13rem;
+  padding: 1.3rem clamp(1rem, 3vw, 3rem);
+  border-left: 1px solid rgba(240, 236, 227, 0.18);
+}
+
+.scoreboard div:first-child { border-left: 0; }
+.scoreboard span { color: var(--polish-muted); font-size: 0.72rem; }
+.scoreboard strong {
+  display: block;
+  margin-top: 2.4rem;
+  color: var(--polish-accent);
+  font-size: clamp(3.8rem, 7vw, 7rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.07em;
+  line-height: 0.8;
+}
+
+.polish-checklist {
+  padding: clamp(7rem, 14vw, 13rem) clamp(1rem, 4vw, 4rem);
+}
+
+.polish-section-title {
+  display: grid;
+  grid-template-columns: 0.35fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.polish-section-title p { margin: 0; color: var(--polish-accent); font-weight: 800; }
+.polish-section-title h2 {
+  margin: 0;
+  font-size: clamp(3.6rem, 8vw, 9rem);
+  letter-spacing: -0.075em;
+  line-height: 0.9;
+}
+
+.polish-checklist ol { margin: 0; padding: 0; list-style: none; }
+.polish-checklist li {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: start;
+  padding-block: 1.7rem;
+  border-top: 1px solid rgba(240, 236, 227, 0.22);
+}
+
+.polish-checklist li > span:first-child {
+  color: var(--polish-accent);
+  font-size: 0.75rem;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+
+.polish-checklist h3 { margin: 0 0 0.55rem; font-size: clamp(1.35rem, 2.2vw, 2.15rem); }
+.polish-checklist p { max-width: 52rem; margin: 0; color: var(--polish-muted); line-height: 1.75; }
+.check-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  color: #8fd6a3;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.is-pending .check-state { color: #f2b35f; }
+
+.polish-note {
+  padding: clamp(7rem, 14vw, 13rem) clamp(1rem, 8vw, 10rem);
+  background: var(--polish-accent);
+  color: #1b0b07;
+}
+
+.polish-note > p:first-child { margin: 0 0 1rem; font-weight: 850; }
+.polish-note h2 {
+  max-width: 17ch;
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 7.5rem);
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+.polish-note > p:not(:first-child) { max-width: 42rem; margin: 2rem 0 0; font-weight: 650; line-height: 1.8; }
+.polish-note a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 3rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid currentColor;
+  font-weight: 850;
+}
+
+@media (max-width: 760px) {
+  .polish-nav { grid-template-columns: 1fr auto; min-height: 66px; }
+  .polish-nav > span { display: none; }
+  .polish-hero { grid-template-columns: 1fr; min-height: auto; }
+  .polish-hero h1 { font-size: clamp(4.6rem, 19vw, 7rem); }
+  .scoreboard { grid-template-columns: repeat(2, 1fr); }
+  .scoreboard div { min-height: 10rem; border-bottom: 1px solid rgba(240, 236, 227, 0.18); }
+  .polish-section-title { grid-template-columns: 1fr; }
+  .polish-checklist li { grid-template-columns: 2.5rem 1fr; gap: 1rem; }
+  .check-state { grid-column: 2; width: fit-content; }
+}

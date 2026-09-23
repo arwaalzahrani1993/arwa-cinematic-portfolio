@@ -269,6 +269,11 @@ a {
   border-radius: 12px;
 }
 
+.hero-media picture {
+  display: block;
+  height: 100%;
+}
+
 .hero-media img {
   width: 100%;
   height: 100%;
@@ -348,6 +353,11 @@ a {
   overflow: hidden;
   background: var(--surface);
   border-radius: 12px;
+}
+
+.image-shell picture {
+  display: block;
+  height: 100%;
 }
 
 .image-shell img {

@@ -133,14 +133,19 @@ function SmartImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className={`image-shell image-${status}`}>
       {status === 'loading' && <span className="image-loading" aria-hidden="true" />}
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        onLoad={() => setStatus('ready')}
-        onError={() => setStatus('error')}
-      />
+      <picture>
+        <source srcSet={src.replace(/\.jpg$/, '.webp')} type="image/webp" />
+        <img
+          src={src}
+          alt={alt}
+          width="1586"
+          height="992"
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setStatus('ready')}
+          onError={() => setStatus('error')}
+        />
+      </picture>
       {status === 'error' && <p>تعذّر تحميل الصورة</p>}
     </div>
   )
@@ -206,12 +211,17 @@ function Hero() {
       </div>
 
       <motion.div className="hero-media" style={{ y: imageY, scale: imageScale }}>
-        <img
-          src="/images/madar-cover.jpg"
-          alt="مشهد تجريدي لفضاء أسود وكتلة كروم مضاءة بالأحمر"
-          fetchPriority="high"
-          decoding="async"
-        />
+        <picture>
+          <source srcSet="/images/madar-cover.webp" type="image/webp" />
+          <img
+            src="/images/madar-cover.jpg"
+            alt="مشهد تجريدي لفضاء أسود وكتلة كروم مضاءة بالأحمر"
+            width="1586"
+            height="992"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
       </motion.div>
     </section>
   )
